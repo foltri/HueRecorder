@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PHMyApplicationActivity" >
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Start" android:paddingLeft="10dp" android:paddingRight="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_toLeftOf="@+id/buttonStop"
+        android:layout_toStartOf="@+id/buttonStop" />
+
+    <Button
+        android:id="@+id/buttonStop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_alignTop="@+id/buttonStart"
+        android:layout_toRightOf="@+id/buttonSave"
+        android:layout_toEndOf="@+id/buttonSave" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/newAnimationName"
+        android:autoText="false"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/buttonStart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/newAnimationName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout><!-- From: file:/Users/folti/Documents/hue/HueRecorder/app/src/main/res/layout/activity_main.xml -->

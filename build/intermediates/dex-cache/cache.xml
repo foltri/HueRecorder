@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/folti/Documents/hue/HueRecorder/app/libs/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/folti/Documents/hue/HueRecorder/app/build/intermediates/pre-dexed/debug/gson-2.3.1-cee1f8b2c4ea361c6235b1b79f8649aba6b02ef3.jar" />
+    </item>
+    <item
+        jar="/Users/folti/Documents/hue/HueRecorder/app/libs/huelocalsdk.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b4834b4f53fe4e244207b99082a1651959f4db31">
+        <dex dex="/Users/folti/Documents/hue/HueRecorder/app/build/intermediates/pre-dexed/debug/huelocalsdk-331d8292589f68590fac47f1a7af1c8a0392e967.jar" />
+    </item>
+    <item
+        jar="/Users/folti/Documents/hue/HueRecorder/app/libs/huesdkresources.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a77e9371d8378ee06e42cb3e3e3f04bbdb7714d8">
+        <dex dex="/Users/folti/Documents/hue/HueRecorder/app/build/intermediates/pre-dexed/debug/huesdkresources-2ddab3e1e50d22ad9b05333b3957eb1ed963e5dc.jar" />
+    </item>
+
+</items>
