@@ -108,6 +108,7 @@ public class MyApplicationActivity extends Activity {
 
                 }, 0, 100);
                 startButton.setClickable(false);
+                savedFrames.clear();
             }
 
         });
@@ -183,7 +184,9 @@ public class MyApplicationActivity extends Activity {
             100, 0);
             //No getOn() method?!
             savedFrames.add(tmp);
-            Log.w(TAG, String.valueOf(savedFrames.size()));
+
+            //debug
+            //Log.w(TAG, String.valueOf(savedFrames.size()));
         }
 
         //We call the method that will work with the UI
