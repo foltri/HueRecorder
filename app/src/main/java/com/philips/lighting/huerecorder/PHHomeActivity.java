@@ -21,6 +21,7 @@ import com.philips.lighting.hue.sdk.PHBridgeSearchManager;
 import com.philips.lighting.hue.sdk.PHHueSDK;
 import com.philips.lighting.hue.sdk.PHMessageType;
 import com.philips.lighting.hue.sdk.PHSDKListener;
+import com.philips.lighting.hue.sdk.heartbeat.PHHeartbeatManager;
 import com.philips.lighting.model.PHBridge;
 import com.philips.lighting.model.PHHueError;
 import com.philips.lighting.model.PHHueParsingError;
@@ -123,6 +124,8 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
         
         @Override
         public void onCacheUpdated(List<Integer> arg0, PHBridge bridge) {
+
+           // Log.w(TAG, "On CacheUpdated; " + bridge.getResourceCache().getAllLights().get(1).getLastKnownLightState().getHue());
             Log.w(TAG, "On CacheUpdated");
 
         }
@@ -130,8 +133,12 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
         @Override
         public void onBridgeConnected(PHBridge b) {
             phHueSDK.setSelectedBridge(b);
-            phHueSDK.enableHeartbeat(b, PHHueSDK.HB_INTERVAL);
-            phHueSDK.getLastHeartbeat().put(b.getResourceCache().getBridgeConfiguration() .getIpAddress(), System.currentTimeMillis());
+            PHHeartbeatManager heartbeatManager = PHHeartbeatManager.getInstance();
+            heartbeatManager.enableLightsHeartbeat(b, 200);
+            //phHueSDK.enableHeartbeat(b, 200);//PHHueSDK.HB_INTERVAL);
+
+
+            phHueSDK.getLastHeartbeat().put(b.getResourceCache().getBridgeConfiguration().getIpAddress(), System.currentTimeMillis());
             prefs.setLastConnectedIPAddress(b.getResourceCache().getBridgeConfiguration().getIpAddress());
             prefs.setUsername(prefs.getUsername());
             PHWizardAlertDialog.getInstance().closeProgressDialog();     
@@ -244,7 +251,7 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
         if (listener !=null) {
             phHueSDK.getNotificationManager().unregisterSDKListener(listener);
         }
-        phHueSDK.disableAllHeartbeat();
+        //phHueSDK.disableAllHeartbeat();
     }
         
     @Override
