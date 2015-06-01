@@ -200,7 +200,7 @@ public class MyApplicationActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                myTimer.cancel();
+                if (myTimer != null) myTimer.cancel();
                 recording = false;
                 startButton.setClickable(true);
                 saveButton.setClickable(true);
@@ -225,7 +225,7 @@ public class MyApplicationActivity extends Activity {
             timeSinceLastFrame.set(i, timeSinceLastFrame.get(i) + 1);
 
             //debug
-           // Log.w(TAG, i + ": " + String.valueOf(cache.getAllLights().get(i).getLastKnownLightState().getHue()));
+           Log.w(TAG, i + ": " + String.valueOf(cache.getAllLights().get(i).getLastKnownLightState().getHue()));
         }
 
 
@@ -292,7 +292,7 @@ public class MyApplicationActivity extends Activity {
 
         @Override
         public void onStateUpdate(Map<String, String> arg0, List<PHHueError> arg1) {
-            Log.w(TAG, "Light has updated");
+            //Log.w(TAG, "Light has updated");
         }
 
         @Override
@@ -361,14 +361,14 @@ public class MyApplicationActivity extends Activity {
                         if (lastLightFrame.get(i).getHue() != ligthCache.get(i).getLastKnownLightState().getHue() || lastLightFrame.get(i).getBri() != ligthCache.get(i).getLastKnownLightState().getBrightness()) {
 
                             //.getTransitionTime always gives null!!!!???
-                            int upTime = 0;
+                            int upTime = 200;
                             if(timeSinceLastFrame.get(i) > lastLightFrame.get(i).getTransitionTime()) {
                                 upTime = timeSinceLastFrame.get(i) - lastLightFrame.get(i).getTransitionTime();
                             }
 
                             //Only save frames from the second samples when there's correct upTime
                             if(!firstSample) {
-                                controlFrame savableFrame = new controlFrame(i + 1, lastLightFrame.get(i).getHue(), lastLightFrame.get(i).getBri(), upTime, 0);//lastLightFrame.get(i).getTransitionTime(), upTime);
+                                controlFrame savableFrame = new controlFrame(i + 1, lastLightFrame.get(i).getHue(), lastLightFrame.get(i).getBri(), upTime*100, 0);//lastLightFrame.get(i).getTransitionTime(), upTime);
                                 changedLights.add(savableFrame);
                             }
 

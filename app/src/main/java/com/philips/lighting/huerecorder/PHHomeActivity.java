@@ -134,7 +134,7 @@ public class PHHomeActivity extends Activity implements OnItemClickListener {
         public void onBridgeConnected(PHBridge b) {
             phHueSDK.setSelectedBridge(b);
             PHHeartbeatManager heartbeatManager = PHHeartbeatManager.getInstance();
-            heartbeatManager.enableLightsHeartbeat(b, 200);
+            heartbeatManager.enableLightsHeartbeat(b, 100);
             //phHueSDK.enableHeartbeat(b, 200);//PHHueSDK.HB_INTERVAL);
 
 
