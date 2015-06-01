@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -55,6 +56,7 @@ public class MyApplicationActivity extends Activity {
     private boolean recording = false;
     private ArrayList<Integer> timeSinceLastFrame = new ArrayList<Integer>();
     private boolean firstSample = false;
+    private TextView samlpleNumber = null;
 
     public final class controlFrame
     {
@@ -102,6 +104,7 @@ public class MyApplicationActivity extends Activity {
         setContentView(R.layout.activity_main);
         phHueSDK = PHHueSDK.create();
         final PHBridge bridge = phHueSDK.getSelectedBridge();
+        samlpleNumber = (TextView) findViewById(R.id.sampleTextView);
 
         // Register the PHSDKListener to receive callbacks from the bridge.
         phHueSDK.getNotificationManager().registerSDKListener(listener1);
@@ -357,6 +360,7 @@ public class MyApplicationActivity extends Activity {
                             }
                         }, 0, 100);
                     }
+
                     for (int i = 0; i < ligthCache.size(); i++) {
                         if (lastLightFrame.get(i).getHue() != ligthCache.get(i).getLastKnownLightState().getHue() || lastLightFrame.get(i).getBri() != ligthCache.get(i).getLastKnownLightState().getBrightness()) {
 
@@ -393,6 +397,8 @@ public class MyApplicationActivity extends Activity {
                     for(controlFrame frame:changedLights) {
                         savedFrames.add(frame);
                     }
+
+                    samlpleNumber.setText("Number of samples: " + savedFrames.size());
 
                 }
             }
